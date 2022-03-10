@@ -1,6 +1,8 @@
 # Fakebook
 Una prueba de Recycle view en android por: Nestor Rodriguez Salgado.
 
+Cabe destacar que todo el proyecto fue hehco en Java
+
 Lo realizado y logro implementar en esta version de Fakebook es:
 
   1. Recycle view

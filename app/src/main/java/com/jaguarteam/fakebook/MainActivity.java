@@ -10,19 +10,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
 
     private ArrayList<IViewModel> puclicaciones = new ArrayList<IViewModel>();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -89,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
     public  void iniciar() {
         Logger.addLogAdapter(new AndroidLogAdapter());
-
     }
 }

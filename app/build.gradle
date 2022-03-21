@@ -30,6 +30,8 @@ android {
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
+
+
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.4.1'
@@ -40,8 +42,8 @@ dependencies {
     implementation 'com.airbnb.android:lottie:3.4.2'
     implementation 'io.github.muddz:styleabletoast:2.4.0'
     implementation 'com.orhanobut:logger:2.2.0'
-    implementation 'com.jackpocket:scratchoff:2.0.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.github.AnupKumarPanwar:ScratchView:1.9'
 
     /Firebase/
     implementation platform('com.google.firebase:firebase-bom:29.2.1')

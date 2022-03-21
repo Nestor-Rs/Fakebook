@@ -72,32 +72,78 @@
             android:src="@drawable/ic_launcher_background"
             android:paddingBottom="10dp"
             />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:paddingTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_margin="10dp"
+        >
+        <TextView
+            android:id="@+id/contadorLike"
+            android:textAlignment="center"
+            android:paddingTop="5dp"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Likes: x"
+            />
+        <TextView
+            android:id="@+id/contadorComent"
+            android:paddingTop="5dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="x comentrios"
+            />
+        <TextView
+            android:id="@+id/contadorShare"
+            android:paddingTop="5dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="x veces compartido"
+            />
 
+    </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:weightSum="3"
-            android:paddingTop="10dp">
+            android:paddingTop="5dp">
 
             <Button
+                android:id="@+id/like"
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="#756e83"
                 android:layout_height="match_parent"
+                android:onClick="onClik"
                 android:text="Like" />
 
             <Button
+                android:id="@+id/coment"
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="#756e83"
+                android:onClick="onClikComent"
                 android:layout_height="match_parent"
                 android:text="Coment" />
 
             <Button
+                android:id="@+id/share"
                 android:layout_width="wrap_content"
                 android:layout_weight="1"
                 android:backgroundTint="#756e83"
+                android:onClick="onClikShare"
                 android:layout_height="match_parent"
                 android:text="Share" />
         </LinearLayout>

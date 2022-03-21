@@ -5,8 +5,8 @@ import android.widget.ImageView;
 public interface IViewModel {
     public int getId();
     public void setId(int id);
-    public int getImagenPerfil();
-    public void setImganePerfil(int imagenPerfil);
+    public String getImagenPerfil();
+    public void setImganePerfil(String imagenPerfil);
     public String getNombre();
     public void setNombre(String nombnre);
     public String getApellido();

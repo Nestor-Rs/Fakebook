@@ -10,7 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
+import java.util.logging.Logger;
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
@@ -38,22 +41,38 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     }
 
     class  ViewHolder extends RecyclerView.ViewHolder{
+
+        private TextView countLike,countComent,countShare;
+        Popularity popularity;
+
         ViewHolder(View itemView){
             super(itemView);
         }
         public  void bindItems(IViewModel publicacion){
+            //Tomar todos los item view
             ImageView imgPerfil = itemView.findViewById(R.id.userimg);
             TextView nombre=itemView.findViewById(R.id.nombre);
             TextView apellido=itemView.findViewById(R.id.apellido);
             TextView hora=itemView.findViewById(R.id.hora);
             TextView pub=itemView.findViewById(R.id.publicacion);
             ImageView pubimg=itemView.findViewById(R.id.pubimg);
+            //Likes y coments
+            countLike =itemView.findViewById(R.id.contadorLike);
+            countComent=itemView.findViewById(R.id.contadorComent);
+            countShare=itemView.findViewById(R.id.contadorShare);
 
-            imgPerfil.setImageResource(publicacion.getImagenPerfil());
+            popularity=new Popularity();
+
+            countLike.setText("Likes "+popularity.getLikes());
+            countComent.setText("Comentarios: "+popularity.getComents());
+            countShare.setText(popularity.getLikes()+" veces compartido ");
+
+            //Cambiar los elementos de las imganes
+            Picasso.get().load(publicacion.getImagenPerfil()).error(R.mipmap.ic_launcher_round).into(imgPerfil);
             nombre.setText(publicacion.getNombre());
             apellido.setText(publicacion.getApellido());
             hora.setText("publicado hace: "+String.valueOf(publicacion.getHora()));
-            if(publicacion.getPublicacion() instanceof String){
+            if(publicacion instanceof TextPublic){
                 pub.setText(publicacion.getPublicacion().toString());
                 pubimg.setLayoutParams(new LinearLayout.LayoutParams(0,0));
                 pubimg.setVisibility(View.INVISIBLE);
@@ -61,8 +80,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
             else {
                 ImagePublic miPublicacion =(ImagePublic) publicacion;
                 pub.setText(miPublicacion.getCometImg());
-                pubimg.setImageResource((int)miPublicacion.getPublicacion());
+                Picasso.get().load((String) miPublicacion.getPublicacion()).error(R.mipmap.ic_launcher_round).into(pubimg);
+
             }
+        }
+
+        public Popularity getPopularity() {
+            return popularity;
         }
     }
 }

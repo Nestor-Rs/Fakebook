@@ -4,13 +4,13 @@ import android.widget.ImageView;
 
 public class TextPublic implements  IViewModel{
     private int id;
-    private int imagenPerfil;
+    private String imagenPerfil;
     private String nombre;
     private String apellido;
     private float hora;
     private String publicacion;
 
-    TextPublic(int id,int imagenPerfil,String nombre,String apellido,float hora,String publicacion){
+    TextPublic(int id,String imagenPerfil,String nombre,String apellido,float hora,String publicacion){
         this.id=id;
         this.imagenPerfil=imagenPerfil;
         this.nombre=nombre;
@@ -30,12 +30,12 @@ public class TextPublic implements  IViewModel{
     }
 
     @Override
-    public int getImagenPerfil() {
+    public String getImagenPerfil() {
         return this.imagenPerfil;
     }
 
     @Override
-    public void setImganePerfil(int imagenPerfil) {
+    public void setImganePerfil(String imagenPerfil) {
         this.imagenPerfil=imagenPerfil;
     }
 

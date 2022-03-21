@@ -40,10 +40,10 @@ dependencies {
 
     /Librerias iniciadas por mi/
     implementation 'com.airbnb.android:lottie:3.4.2'
-    implementation 'io.github.muddz:styleabletoast:2.4.0'
     implementation 'com.orhanobut:logger:2.2.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'com.github.AnupKumarPanwar:ScratchView:1.9'
+    implementation 'com.mikhaellopez:circularimageview:4.3.0'
 
     /Firebase/
     implementation platform('com.google.firebase:firebase-bom:29.2.1')

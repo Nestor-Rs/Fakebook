@@ -69,7 +69,6 @@ public class MainActivity extends AppCompatActivity{
     }
 
     public void getPublicacion(){
-        //puclicaciones.add(new TextPublic(0,"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoHYtXTchhspak0O8PNPKAPD9Cf08U6284ng&usqp=CAU", "Nestor", "Rodriguez", (float) 18.04, "Esta es mi primera publicacion"));
         db.collection("Publicaciones").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
@@ -109,9 +108,6 @@ public class MainActivity extends AppCompatActivity{
         });
     }
     public void editPublicacion(){
-
-    }
-    public void deletePublicacion(){
 
     }
 }

@@ -53,12 +53,22 @@
                 />
 
             <ImageButton
+                android:id="@+id/edit"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="50dp"
                 android:backgroundTint="#454a5b"
                 android:src="@drawable/ic_baseline_edit_note_2"
+                tools:ignore="SpeakableTextPresentCheck" />
+            <ImageButton
+                android:id="@+id/delete"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="10dp"
+                android:backgroundTint="#454a5b"
+                android:src="@drawable/ic_baseline_delete_forever_24"
                 tools:ignore="SpeakableTextPresentCheck" />
         </LinearLayout>
 

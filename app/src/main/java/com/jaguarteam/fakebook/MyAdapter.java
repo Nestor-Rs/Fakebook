@@ -1,9 +1,12 @@
 package com.jaguarteam.fakebook;
 
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -11,6 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -19,7 +23,7 @@ import java.util.logging.Logger;
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     ArrayList<IViewModel> publicacionList;
-
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     MyAdapter(ArrayList<IViewModel> publicacionList){
         super();
         this.publicacionList=publicacionList;
@@ -49,20 +53,27 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         private TextView countLike,countComent,countShare;
         Popularity popularity;
         Button BLike,BComent,BShare;
+        ImageButton BDelete,BEdit;
+        IViewModel myPub;
 
         ViewHolder(View itemView){
             super(itemView);
             BLike=itemView.findViewById(R.id.like);
             BComent=itemView.findViewById(R.id.coment);
             BShare=itemView.findViewById(R.id.share);
+            BDelete=itemView.findViewById(R.id.delete);
+            BEdit=itemView.findViewById(R.id.edit);
         }
         void setOnclikLiseners(){
             BLike.setOnClickListener(this);
             BComent.setOnClickListener(this);
             BShare.setOnClickListener(this);
+            BDelete.setOnClickListener(this);
+            BEdit.setOnClickListener(this);
         }
 
         public  void bindItems(IViewModel publicacion){
+            myPub=publicacion;
             //Tomar todos los item view
             ImageView imgPerfil = itemView.findViewById(R.id.userimg);
             TextView nombre=itemView.findViewById(R.id.nombre);
@@ -112,6 +123,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
                 case R.id.share:
                     this.popularity.oneShare();
                     countShare.setText(popularity.getShares()+" veces compartido ");
+                    break;
+                case R.id.delete:
+                    db.collection("Publicaciones").document(myPub.getId()).delete();
+                    final Context deleteContext;
+                    deleteContext = itemView.getContext();
+                    Intent refresh = new Intent(deleteContext.getApplicationContext(), Refresh.class);
+                    deleteContext.startActivity(refresh);
+                    break;
+                case R.id.edit:
+                    final Context context;
+                    context = itemView.getContext();
+                    Intent detail = new Intent(context.getApplicationContext(), UpdatePub.class);
+                    detail.putExtra("id", myPub.getId());
+                    context.startActivity(detail);
+                    break;
             }
         }
     }

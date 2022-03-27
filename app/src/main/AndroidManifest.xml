@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
         <activity
+            android:name=".UpdatePub"
+            android:exported="false" />
+        <activity
+            android:name=".Refresh"
+            android:exported="false" />
+        <activity
             android:name=".newPublication"
             android:exported="false" />
         <activity

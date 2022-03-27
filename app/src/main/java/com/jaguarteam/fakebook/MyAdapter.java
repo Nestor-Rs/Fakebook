@@ -3,6 +3,7 @@ package com.jaguarteam.fakebook;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -15,7 +16,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
 
     ArrayList<IViewModel> publicacionList;
 
@@ -33,6 +34,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.bindItems(publicacionList.get(position));
+        //Dar eventos
+        holder.setOnclikLiseners();
     }
 
     @Override
@@ -40,14 +43,25 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         return publicacionList.size();
     }
 
-    class  ViewHolder extends RecyclerView.ViewHolder{
+
+    class  ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private TextView countLike,countComent,countShare;
         Popularity popularity;
+        Button BLike,BComent,BShare;
 
         ViewHolder(View itemView){
             super(itemView);
+            BLike=itemView.findViewById(R.id.like);
+            BComent=itemView.findViewById(R.id.coment);
+            BShare=itemView.findViewById(R.id.share);
         }
+        void setOnclikLiseners(){
+            BLike.setOnClickListener(this);
+            BComent.setOnClickListener(this);
+            BShare.setOnClickListener(this);
+        }
+
         public  void bindItems(IViewModel publicacion){
             //Tomar todos los item view
             ImageView imgPerfil = itemView.findViewById(R.id.userimg);
@@ -81,12 +95,24 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
                 ImagePublic miPublicacion =(ImagePublic) publicacion;
                 pub.setText(miPublicacion.getCometImg());
                 Picasso.get().load((String) miPublicacion.getPublicacion()).error(R.mipmap.ic_launcher_round).into(pubimg);
-
             }
         }
 
-        public Popularity getPopularity() {
-            return popularity;
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()){
+                case R.id.like:
+                    this.popularity.oneLike();
+                    countLike.setText("Likes "+popularity.getLikes());
+                    break;
+                case R.id.coment:
+                    this.popularity.oneComent();
+                    countComent.setText("Comentarios: "+popularity.getComents());
+                    break;
+                case R.id.share:
+                    this.popularity.oneShare();
+                    countShare.setText(popularity.getShares()+" veces compartido ");
+            }
         }
     }
 }

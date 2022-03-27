@@ -3,14 +3,14 @@ package com.jaguarteam.fakebook;
 import android.widget.ImageView;
 
 public class TextPublic implements  IViewModel{
-    private int id;
+    private String id;
     private String imagenPerfil;
     private String nombre;
     private String apellido;
     private float hora;
     private String publicacion;
 
-    TextPublic(int id,String imagenPerfil,String nombre,String apellido,float hora,String publicacion){
+    TextPublic(String id,String imagenPerfil,String nombre,String apellido,float hora,String publicacion){
         this.id=id;
         this.imagenPerfil=imagenPerfil;
         this.nombre=nombre;
@@ -20,12 +20,12 @@ public class TextPublic implements  IViewModel{
     }
 
     @Override
-    public int getId() {
+    public String getId() {
         return this.id;
     }
 
     @Override
-    public void setId(int id) {
+    public void setId(String id) {
         this.id=id;
     }
 

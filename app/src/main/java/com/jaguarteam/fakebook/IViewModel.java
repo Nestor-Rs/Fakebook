@@ -3,8 +3,8 @@ package com.jaguarteam.fakebook;
 import android.widget.ImageView;
 
 public interface IViewModel {
-    public int getId();
-    public void setId(int id);
+    public String getId();
+    public void setId(String id);
     public String getImagenPerfil();
     public void setImganePerfil(String imagenPerfil);
     public String getNombre();

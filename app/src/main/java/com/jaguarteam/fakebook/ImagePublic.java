@@ -3,7 +3,7 @@ package com.jaguarteam.fakebook;
 import com.orhanobut.logger.Logger;
 
 public class ImagePublic implements  IViewModel{
-    private int id;
+    private String id;
     private String imagenPerfil;
     private String nombre;
     private String apellido;
@@ -11,7 +11,7 @@ public class ImagePublic implements  IViewModel{
     private String cometImg;
     private String publicacion;
 
-    ImagePublic(int id,String imagenPerfil,String nombre,String apellido,float hora,String comentImg,String publicacion){
+    ImagePublic(String id,String imagenPerfil,String nombre,String apellido,float hora,String comentImg,String publicacion){
         this.id=id;
         this.imagenPerfil=imagenPerfil;
         this.nombre=nombre;
@@ -23,12 +23,12 @@ public class ImagePublic implements  IViewModel{
     }
 
     @Override
-    public int getId() {
+    public String getId() {
         return this.id;
     }
 
     @Override
-    public void setId(int id) {
+    public void setId(String id) {
         this.id=id;
     }
 

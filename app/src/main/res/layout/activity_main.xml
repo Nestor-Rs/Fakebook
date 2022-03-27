@@ -39,7 +39,8 @@
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_banner_foreground"/>
+                android:src="@drawable/ic_banner_foreground"
+                android:contentDescription="TODO" />
 
             <com.anupkumarpanwar.scratchview.ScratchView
                 android:id="@+id/scratch_view"
@@ -57,5 +58,29 @@
             android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="24dp"
+        >
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:src="@drawable/ic_baseline_add_24"
+            tools:ignore="SpeakableTextPresentCheck"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            app:backgroundTint="#3b5998"
+            />
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
